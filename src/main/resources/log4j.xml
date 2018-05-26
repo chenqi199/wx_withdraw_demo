@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+  <!-- Appenders -->
+  <appender name="FILE" class="org.apache.log4j.RollingFileAppender">
+    <param name="file" value="${project.home}/logs/dispatchmanage.log" />
+    <param name="append" value="true" />
+    <param name="maxFileSize" value="100MB" />
+    <param name="maxBackupIndex" value="10" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name='ConversionPattern' value='[%-5p][%d{yyyy/MM/dd HH:mm:ss}][%l][%m]%n' />
+    </layout>
+  </appender>
+
+  <appender name="Console" class="org.apache.log4j.ConsoleAppender">
+    <param name="Target" value="System.out" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name='ConversionPattern' value='[%-5p][%d{yyyy/MM/dd HH:mm:ss}][%l][%m]%n' />
+    </layout>
+  </appender>
+
+  <!-- Application Loggers -->
+  <logger name="com.chen">
+    <level value="debug" />
+    <appender-ref ref="FILE" />
+  </logger>
+
+  <!-- 3rdparty Loggers -->
+  <logger name="org.springframework.core">
+    <level value="info" />
+  </logger>
+
+  <logger name="org.springframework.beans">
+    <level value="info" />
+  </logger>
+
+  <logger name="org.springframework.context">
+    <level value="info" />
+  </logger>
+
+  <logger name="org.springframework.web">
+    <level value="info" />
+  </logger>
+
+  <!--&lt;!&ndash; SQL Loggers &ndash;&gt;-->
+  <!--<logger name="java.sql.Statement" additivity="true">-->
+    <!--<level value="debug" />-->
+  <!--</logger>-->
+  <!--<logger name="java.sql.PreparedStatement" additivity="true">-->
+    <!--<level value="debug" />-->
+  <!--</logger>-->
+
+  <!--<logger name="com.ibatis">-->
+    <!--<level value="info" />-->
+  <!--</logger>-->
+
+  <!-- Root Logger -->
+  <root>
+    <level value="info" />
+    <appender-ref ref="Console" />
+  </root>
+
+</log4j:configuration>
